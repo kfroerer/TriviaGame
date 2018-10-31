@@ -74,6 +74,10 @@ var gameStart = function(){
 
             }
 }
+    $("#instructions").remove();
 }
- gameStart()
+
+$("#start-button").on("click", function(){
+    gameStart();
+})
 });
