@@ -53,6 +53,7 @@ var questionBank = [
         correct: "a fur coat"
     }
 ]
+var buttonText;
 var gameStart = function(){
     for (var i = 0; i < questionBank.length; i++){
         var QuestionDiv = $("<div>");
@@ -62,13 +63,18 @@ var gameStart = function(){
         questionLine.append(questionBank[i].ask);
 
         for (var j = 0; j < questionBank[i].choices.length; j++){
-            var button = $("<button>");
-            button.addClass("button choices-button");
-            var buttonText = (questionBank[i].choices[j])
-            button.attr("id", buttonText)
-            button.attr("index", i)
-            button.text(buttonText);
-            QuestionDiv.append(button);
+            var form = $("<form>");
+            var input = $("<input type=radio>");
+            $("input:name").val("choice");
+
+            // var inputText = (questionBank[i].choices[j])
+            $("input:text").val(questionBank[i].choices[j]);
+            // input.text(inputText);
+            
+            // input.attr("index", j)
+            //I want to use this above for checkWin, but scope is an issue
+            form.append(input);
+            QuestionDiv.append(form);
             $(".question-field").append(QuestionDiv);
             }
     }
@@ -78,27 +84,32 @@ var gameStart = function(){
 $("#start-button").on("click", function(){
     gameStart();
     });
+// //if what they clicked matches correct from object
 
-$(document).on("click", ".choices-button", function(){
-    console.log("button clicked");
-    var userInput = $(this).attr("id");
-    
-    var index = $(this).attr("index");
-    // console.log(score);
-    $(this).addClass("clicked");
-    
-    //disable other sibling elements - jquery 
+// var clickedButton = function(){
+//     buttonText = 
+// }
 
-    if (userInput === questionBank[index].correct){
-        score++;
-    console.log(score)    
-    };
-    
-});
 
+// $(".button").click(function(){
+//     var userInput = $(this).att("id");
+//     var index = $(this).att("index");
+    
+
+//     if (userInput === questionBank[index].correct){
+//         score ++;
+//     }
+// //  })
+
+
+//maybe in for loop somehow add data to the correct one...
  
 
-
+// var checkAnswer = function (){
+//     if ($(".button").click("clicked"
+//         score ++;
+//     }
+// }
 
 
 
