@@ -1,6 +1,7 @@
 $(document).ready(function(){
 var score = 0;
-
+var timeLeft = 30;
+var intervalID = setInterval(countdown, 1000)
 var questionBank = [
     {
         ask: "What color is the couch at Central Perk?",
@@ -53,7 +54,41 @@ var questionBank = [
         correct: "a fur coat"
     }
 ]
+
+// function timeConverter(t) {
+
+//     var minutes = Math.floor(t / 60);
+//     var seconds = t - (minutes * 60);
+
+//     if (seconds < 10) {
+//     seconds = "0" + seconds;
+//     }
+
+//     if (minutes === 0) {
+//     minutes = "00";
+//     }
+//     else if (minutes < 10) {
+//     minutes = "0" + minutes;
+//     }
+
+//     return minutes + ":" + seconds;
+// }
+// var converted = timeConverter(timeLeft);
+// intervalID = setInterval(countdown, 1000)
+function countdown() {  
+        if (timeLeft == -1){
+        clearTimeout(intervalID);
+        $(".question-field").empty()
+        $("#instructions").text("Your final score: " + score + "/10!")
+    }else {
+        $("#timer").text(timeLeft + " seconds remaining")
+        timeLeft--;
+    }
+
+};
+
 var gameStart = function(){
+       
     for (var i = 0; i < questionBank.length; i++){
         var QuestionDiv = $("<div>");
         var questionLine = $("<p>");
@@ -73,10 +108,12 @@ var gameStart = function(){
             }
     }
     $("#instructions").remove();
+    
 }
 
 $("#start-button").on("click", function(){
-    gameStart();
+   gameStart();
+  
     });
 
 $(document).on("click", ".choices-button", function(){
@@ -95,7 +132,6 @@ $(document).on("click", ".choices-button", function(){
     };
     
 });
-
  
 
 
