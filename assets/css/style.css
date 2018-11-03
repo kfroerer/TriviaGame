@@ -3,6 +3,14 @@ body {
     background-color: black;
 }
 
+h1 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 20px;
+}
+
 .content {
     height: 1100px;
     background-color: white;
@@ -49,4 +57,14 @@ p {
 
 .clicked {
     background-color: coral;
+}
+
+.picture {
+    margin: auto;
+    padding: 10%;
+    display: block;
+}   
+
+#timer {
+    font-size: 20px;
 }
