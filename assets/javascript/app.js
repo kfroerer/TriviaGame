@@ -80,13 +80,10 @@ function countdown() {
         clearTimeout(intervalID);
         $(".question-field").empty();
         $("#timer").text("Your final score: " + score + "/10!");
-        var resetButton = $("<button>");
-        resetButton.addClass("button resetButton");
-        resetButton.text("Play Again")
-        $("main").append(resetButton)
+       
     }else {
         timeLeft--;
-        $("#timer").text(timeLeft + " remaining")
+        $("#timer").text(timeLeft + " remaining");
     }
 
 };
